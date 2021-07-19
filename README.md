@@ -1,2 +1,5 @@
 # docs-dev
-开发规范
+
+> [Switch to English](/en/)
+
+# 开发者文档

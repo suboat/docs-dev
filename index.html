@@ -11,13 +11,17 @@
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
 </head>
-<body>
+<body>Description
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'DOCS-DEV',
       repo: 'https://github.com/suboat/docs-dev',
       loadSidebar: true,
+      alias: {
+        '/zh-cn/_navbar.md': '/_navbar.md',
+        '/zh-cn/_sidebar.md': '/_sidebar.md'
+      },
       subMaxLevel: 3,
       loadNavbar: true,
       markdown: {

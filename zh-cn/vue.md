@@ -14,7 +14,9 @@
     </template>
 ```
 ----
-##### 2. vue组件 props 规范
+##### 2. vue页面级组件命名
+  > 统一使用kebab-case，跟组件区别开来
+##### 3. vue组件 props 规范
    > Prop 定义应该尽量详细
 
  ```vue

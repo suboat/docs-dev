@@ -2,7 +2,53 @@
 ## 一、概述
 本规范旨在为前端程序的开发者提供规范化的指导，用于程序员个人编译环境以及研发团队集成环境等场合的代码规范化检查。以求达到不管有多少人共同参与同一项目，每一行代码的编写风格尽量一致的效果
 
-## 二、vue 代码风格规范
+## 二、vue 项目结构
+
+```
+├── babel.config.js      # babel配置
+├── build                # 构建相关配置
+│   └── index.js
+├── jest.config.js       # 单元测试配置
+├── jsconfig.json
+├── online.sh            # 编译到正式服脚本[执行前要先获得许可]
+├── package.json         # 项目描述文件
+├── postcss.config.js    # postcss 配置
+├── preview.sh           # 编译到测试服脚本
+├── public               # 静态资源
+│   ├── favicon.ico      # favicon图标
+│   └── index.html       # html模板
+├── src                  # 源代码
+│   ├── App.vue
+│   ├── api              # 全局 api 请求
+│   ├── assets           # 主题 字体 图片等静态资源
+│   ├── components       # 全局公用组件
+│   ├── directive        # 全局指令
+│   ├── filters          # 全局 filter
+│   ├── graphql          # 统一放置 graphql 查询语句
+│   ├── icons            # 全局svg图标
+│   ├── layout           # 全局 layout
+│   ├── main.js          # 入口文件 加载组件 全局指令 filter 初始化等
+│   ├── mixins           # 全局 mixins
+│   ├── permission.js    # 路由权限管理
+│   ├── router           # 全局路由配置
+│   ├── settings.js
+│   ├── store            # 全局vuex 状态管理配置
+│   ├── styles           # 全局样式
+│   ├── utils            # 全局公共变量 公共函数 初始化函数 websocket 初始化等配置
+│   └── views            # 统一放置页面文件
+├── tests                # 测试代码文件夹
+│   └── unit
+├── vue.config.js        # vue-cli 配置
+├── .env.development     # 开发环境变量配置
+├── .env.production      # 生产环境变量配置
+├── .env.staging         # 测试环境变量配置
+├── .eslintignore        # eslint 忽略项目
+├── .eslintrc.js         # eslint 配置
+└── yarn.lock            # 准确的存储每个依赖的具体版本信息，以保证在不同机器安装可以得到相同的结果。
+```
+
+----
+## 三、vue 代码风格规范
 ##### 1. vue组件命名
   > 统一使用 PascalCase (单词首字母大写命名)声明约定
   > 1. 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。
@@ -94,7 +140,8 @@
    >    * 如果条件出现在循环内部，可通过计算属性computed提前过滤掉那些不需要显示的项
 
 ----
-## 三、JavaScript 代码风格规范
+
+## 四、JavaScript 代码风格规范
 ##### 1. 对象属性的访问
 >  当访问可能不存在的对象属性时 优先使用[可选链操作符( ?. )](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
 > 
@@ -162,7 +209,7 @@ Vue.prototype.$$ = optionalChaining;
 ```
 
 
-## 四、样式书写规范
+## 五、样式书写规范
 1. 根据项目设计图原型图归纳出本项目的一些公共样式类(功能类) 这些公共样式类尽量简单化 一个样式实现一个功能 实现原子化CSS
 2. 在项目编码过程中优先使用预定义好的公共样式类   
    > 优势
@@ -198,7 +245,7 @@ Vue.prototype.$$ = optionalChaining;
 2. [参考资料 2](https://juejin.cn/post/6917073600474415117)
 3. [参考资料 3](https://www.tailwindcss.cn/)
 
-## 五、注释规范
+## 六、注释规范
 1. 公共组件使用说明以及业务场景
    
 ```vue
@@ -229,20 +276,20 @@ Vue.prototype.$$ = optionalChaining;
 4. 特殊情况的代码处理说明,对于代码中特殊用途的变量、存在临界值、函数中使用的 hack、使用了某种算法或思路等需要进行注释描述
 5. 多重 if 判断语句的代码处理说明
 
-## 六、代码检查与格式化
+## 七、代码检查与格式化
 >项目采用 eslint 用来进行代码的校验，能够检测出代码中的潜在问题，提高代码质量；使用 prettier作为代码格式化工具，统一的代码风格能保证代码的可读性，所以提交代码前必须先格式化。
 > 
 >对于 mac 或者 linux 系统提交代码前会自动运行 git hook的pre-commit 检测代码问题并且格式化代码， win10 用户如果不自动运行 githook，则需自己执行npm run lint 或者 yarn lint 检测代码问题并且格式化代码
 
 
-## 七、包管理工具
+## 八、包管理工具
 > 为保证运行结果的一致性和稳定性，项目将统一采用 yarn 作为包管理工具
 > 
 > yarn 就是一个类似于 npm 的包管理工具，它是由 facebook 推出并开源。 与 npm 相比，yarn 有着众多的优势，主要的优势在于：速度快、离线模式、版本控制。
 > 
 > 详细安装方式参考官网：https://yarn.bootcss.com/docs/install/#mac-stable
  
-## 七、开发工具
+## 九、开发工具
 > 优先推荐使用[WebStorm](https://www.jetbrains.com/webstorm/)进行项目开发
    * WebStorm 统一配置如下
 

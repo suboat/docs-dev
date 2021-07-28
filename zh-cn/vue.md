@@ -206,6 +206,8 @@ Vue.prototype.$$ = optionalChaining;
       console.log(name, age)
    }
 ```
+   * 代码块中避免多余留白
+
 ##### 3. 命名规范
    >  一个不好的命名，可能会引起别人错误理解，对开发效率，项目的质量影响很大；从维护项目上，遵循一套合理的命名规范，无论是对自己还是接手的他人，都会大大降低代码的维护成本.
    >
@@ -380,6 +382,19 @@ Vue.prototype.$$ = optionalChaining;
    > * 添加验证不通过表单项的信息提示
    > * 验证通过才可以提交表单,否则不予许提交表单
 
+## 十二、前端技术栈
+1. css预处理器: scss、less
+2. 基础框架: Vue、React-Native(APP开发)
+3. 组件库: 
+   * PC   端: [element-ui](https://element.eleme.cn/#/zh-CN/component/installation)
+   * H5移动端: [vant](https://youzan.github.io/vant/#/zh-CN/) 
+   * 小程序端: [uviewui](https://www.uviewui.com/)
+4. 技术框架:
+   * 小程序开发: [uni-app](https://uniapp.dcloud.net.cn/README)
+   * pc中台-基于: [vue-element-admin](https://panjiachen.github.io/vue-element-admin-site/zh/guide/) 二次开发
+5. 图标处理:
+   * iconfont + SVG（设计师无法导入到iconfont的特殊彩色icon 使用 svg）
+   
 ## todo
 - [ ] 项目初始化
 - [ ] 当前用户登录后被其他用户挤下线提示

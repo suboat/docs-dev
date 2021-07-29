@@ -305,7 +305,31 @@ Vue.prototype.$$ = optionalChaining;
 
 ![webstorm 配置](https://api.suboat.com/api/yichui/filepool/download/images/bbbf9e2fef6c4d6ece5bb5946d6055a5af87052e.jpg)
 
-## 十、交互体验优化
+## 十、git 提交规范
+> 在使用Git进行代码的分布式版本控制时，规范化commit message可以帮助程序猿在多人开发协作中更好的理解他人对代码的改动信息，
+> 
+>避免大家按照各自的理解和习惯（甚至是随意）书写，而对他人和自己造成困惑，从而增加代码审查和纠错的时间成本。
+> 
+> 一个规范化的commit message，具有以下作用：
+> 1. 提供更多的历史信息，方便快速浏览
+> 2. 可以过滤某些commit（比如文档改动），便于快速查找信息
+> 3. 可以直接从commit生成CHANGELOG.md
+>  
+
+> git commit 要求: 
+> 1. 简单描述主要修改类型和内容 描述为什么修改, 做了什么样的修改.
+> 
+> type: commit 的类型 [必填]
+> 1. feat: 新特性 新功能
+> 2. fix: 修改问题
+> 3. refactor: 代码重构
+> 4. docs: 文档修改
+> 5. style: 代码格式修改
+> 6. test: 测试用例修改
+> 7. chore: 其他修改, 比如构建流程, 依赖管理.
+> 
+
+## 十一、交互体验优化
 
 1. Loading
    > 如果要加载过长时间，给用户一个反馈，能让用户知道现在系统还在运行，而不是卡主了或者是系统问题。

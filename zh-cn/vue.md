@@ -221,7 +221,7 @@ Vue.prototype.$$ = optionalChaining;
    > 
    [参考资料](https://segmentfault.com/a/1190000020039039)
 ##### 4. 三元运算符的使用
-   >  不要这样写: a?b:c?e:f, 嵌套过深，会导致自己或其他人理解困难。
+   >  不要这样写: sthTrue? true : false ? 'string' : 'number', 嵌套过深，会导致自己或其他人理解困难。
    >  可以这样写: const isTrue = a === b ? true : false;  
 
 ## 五、样式书写规范

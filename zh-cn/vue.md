@@ -241,7 +241,7 @@ Vue.prototype.$$ = optionalChaining;
   </template>
 ```
 
-3. 样式类公共化大致思路
+3. 样式类公共化分类思路 [例子](/zh-cn/atom.scss.md)
    > * 弹性布局
    > * 网格布局
    > * 盒对齐
@@ -345,7 +345,7 @@ Vue.prototype.$$ = optionalChaining;
    > * 下拉数据列表
    > * 详情
    > * 提交数据时
-   > 
+   > * 上传
    > 解决方案:
    > 
    > 在异步请求没返回数据时,加上 loading 提示. 
@@ -380,7 +380,7 @@ Vue.prototype.$$ = optionalChaining;
    
  7. 可点击元素鼠标变成手型
  8. 表单
-   > * 支持 Enter 按键提交表单
+   > * 支持 Enter 按键提交表单, 同时防止按下 Enter 按键导致页面刷新
    > * 异步验证时显示验证中状态，比如显示loading图标
    > * 必填项验证
    > * 自定义规则验证
@@ -399,7 +399,10 @@ Vue.prototype.$$ = optionalChaining;
    * pc中台-基于: [vue-element-admin](https://panjiachen.github.io/vue-element-admin-site/zh/guide/) 二次开发
 5. 图标处理:
    * iconfont + SVG（设计师无法导入到iconfont的特殊彩色icon 使用 svg）
-   
+
+## 十二、部署文档
+[查看部署文档](/zh-cn/fe-deploy.md)
+
 ## todo
 - [ ] 项目初始化
 - [ ] 当前用户登录后被其他用户挤下线提示

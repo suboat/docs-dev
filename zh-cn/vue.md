@@ -30,9 +30,9 @@
 │   ├── main.js          # 入口文件 加载组件 全局指令 filter 初始化等
 │   ├── mixins           # 全局 mixins
 │   ├── permission.js    # 路由权限管理
-│   ├── router           # 全局路由配置
+│   ├── router           # 全局路由配置(按照业务进行拆分不同的 js 文件)
 │   ├── settings.js
-│   ├── store            # 全局vuex 状态管理配置
+│   ├── store            # 全局vuex 状态管理配置(按照业务进行拆分不同的 js 文件)
 │   ├── styles           # 全局样式
 │   ├── utils            # 全局公共变量 公共函数 初始化函数 websocket 初始化等配置
 │   └── views            # 统一放置页面文件
@@ -53,6 +53,26 @@
   > 统一使用 PascalCase (单词首字母大写命名)声明约定
   > 1. 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。
   > 2. 对于绝大多数项目来说，组件名应该总是 PascalCase 的, ——但是在 DOM 模板中总是 kebab-case 的
+  
+```
+├── components
+│   │   ├── Breadcrumb
+│   │   │   └── index.vue
+│   │   ├── DescItem
+│   │   │   └── DescItem.vue
+│   │   ├── Empty
+│   │   │   └── Empty.vue
+│   │   ├── Hamburger
+│   │   │   └── index.vue
+│   │   ├── MoreOptionBtn
+│   │   │   └── MoreOptionBtn.vue
+│   │   ├── Msg
+│   │   │   ├── Msg.vue
+│   │   │   └── MsgItem.vue
+│   │   ├── SvgIcon
+│   │   │   └── index.vue
+
+```
 ```vue
     // 组件名为 MyComponent 的组件在模板里使用
     <template>
@@ -60,9 +80,33 @@
     </template>
 ```
   > 3. 页面命名统一kebab-case声明约定 形如: goods-list order-list
+
 ----
 ##### 2. vue页面级组件命名
   > 统一使用kebab-case，跟组件区别开来
+  ```
+└── views
+│       ├── project
+│       │   ├── components
+│       │   ├── new-project.vue
+│       │   ├── project-detail.vue
+│       │   └── project-list.vue
+│       ├── project-draft
+│       │   ├── components
+│       │   ├── draft-detail.vue
+│       │   ├── new-draft.vue
+│       │   └── project-draft.vue
+│       ├── rank
+│       │   └── rank.vue
+│       ├── statistics
+│       │   └── statistics.vue
+│       └── task
+│           ├── agency.vue
+│           ├── components
+│           ├── task-detail.vue
+│           └── task-list.vue
+```
+
 ##### 3. vue组件 props 规范
    > Prop 定义应该尽量详细
 
@@ -148,7 +192,6 @@
 > 
 >  当使用可选链时返回 null或者 undefined 时,需要设置一个默认值, 优先使用[空值合并操作符（??）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
 
-
    * 在 vue template 里面的用法
 
 ```javascript
@@ -192,7 +235,11 @@ Vue.prototype.$$ = optionalChaining;
 ```
 
 ##### 2. 使用 ES6 风格编码
-   * 定义变量使用 let ,定义常量使用 const, 不要再使用 var
+   * 定义变量使用 [let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) ,定义常量使用 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const), 不要再使用 var
+     > let允许你声明一个作用域被限制在 块级中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局或者整个函数块的。
+     > 
+     > 用let声明的变量，不存在变量提升。而且要求必须 等let声明语句执行完之后，变量才能使用，不然会报Uncaught ReferenceError错误
+     >
    * 静态字符串一律使用单引号，动态字符串使用反引号
 
 ```javascript
@@ -201,11 +248,14 @@ Vue.prototype.$$ = optionalChaining;
 ```
    * 需要使用函数表达式的场合，尽量用箭头函数代替。因为这样更简洁，而且绑定了 this
    * 函数默认值, 函数默认值写在其他参数后面
-   * 相等性判断 一律使用严格相等比较 (===)
+   * 相等性判断 一律使用严格相等比较 (===), 可以使两个被比较的值在比较前都不进行隐式转换,[详情](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
 
 ```javascript
-   function getUserInfo(name, age = 12) {
-      console.log(name, age)
+   getUserInfo = (name, age = 12) => {
+      if (name === 'Jack') {
+        return 'This is Jack speaking'
+      }
+      return {name, age}
    }
 ```
    * 代码块中避免多余留白
@@ -216,13 +266,56 @@ Vue.prototype.$$ = optionalChaining;
    > 1. 变量
    > * 重要的变量命名需要加上备注
    > * 禁止 obj = {} , aaa = ''; b = ''; list2 = []; list4 = []; 等等这些无意义且容易让人产生疑惑的命名方式.
-   > * 统一采用Camel Case 小驼峰式命名法 形如：studentInfo userInfo
+   > * 统一采用camelCase 小驼峰式命名法 形如：studentInfo userInfo
    > * 实在不会的英文单词 自行使用翻译工具翻译成英文,并且加上变量备注
    > 
    [参考资料](https://segmentfault.com/a/1190000020039039)
 ##### 4. 三元运算符的使用
    >  不要这样写: sthTrue? true : false ? 'string' : 'number', 嵌套过深，会导致自己或其他人理解困难。
    >  可以这样写: const winner = goldNumber > 6 ? 'li' : 'mei';  
+
+##### 5. 解构赋值
+   * 使用数组成员对变量赋值时，优先使用解构赋值。
+```javascript
+   const arr = [1, 2, 3, 4];
+
+   // bad
+   const first = arr[0];
+   const second = arr[1];
+   
+   // good
+   const [first, second] = arr;
+```
+   * 函数的参数如果是对象的成员，优先使用解构赋值。
+```javascript
+   // bad
+   function getFullName(user) {
+      const firstName = user.firstName;
+      const lastName = user.lastName;
+   }
+   
+   // good
+   function getFullName(user) {
+      const { firstName, lastName } = user;
+   }
+   
+   // better
+   function getFullName({ firstName, lastName }) {
+   }
+```
+   * 优先使用对象的解构赋值
+```javascript
+   const user = {
+      firstName: 'Bob',
+      lastName: 'King',
+   };
+    // bad
+   const firstName = user.firstName;
+   const lastName = user.lastName;
+   // good
+  const { firstName, lastName } = user;
+```
+   * [解构赋值参考资料](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 ## 五、样式书写规范
 1. 根据项目设计图原型图归纳出本项目的一些公共样式类(功能类) 这些公共样式类尽量简单化 一个样式实现一个功能 实现原子化CSS
@@ -305,6 +398,7 @@ Vue.prototype.$$ = optionalChaining;
 > 详细安装方式参考官网：https://yarn.bootcss.com/docs/install/#mac-stable
  
 ## 九、开发工具
+> 代码缩进统一使用两个空格
 > 优先推荐使用[WebStorm](https://www.jetbrains.com/webstorm/)进行项目开发
    * WebStorm 统一配置如下
 
@@ -407,3 +501,4 @@ Vue.prototype.$$ = optionalChaining;
 - [ ] 项目初始化
 - [ ] 当前用户登录后被其他用户挤下线提示
 - [ ] 覆盖后端返回的报错信息
+- [ ] 统一配置列表为空文字

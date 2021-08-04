@@ -1,8 +1,23 @@
 # vue
-## 一、概述
+## 概述
 本规范旨在为前端程序的开发者提供规范化的指导，用于程序员个人编译环境以及研发团队集成环境等场合的代码规范化检查。以求达到不管有多少人共同参与同一项目，每一行代码的编写风格尽量一致的效果
 
-## 二、vue 项目结构
+## 开发工具
+> 代码缩进统一使用两个空格
+> 优先推荐使用[WebStorm](https://www.jetbrains.com/webstorm/)进行项目开发
+* WebStorm 统一配置如下
+
+![webstorm 配置](https://api.suboat.com/api/yichui/filepool/download/images/bbbf9e2fef6c4d6ece5bb5946d6055a5af87052e.jpg)
+
+## 包管理工具
+> 为保证运行结果的一致性和稳定性，项目将统一采用 yarn 作为包管理工具
+>
+> yarn 就是一个类似于 npm 的包管理工具，它是由 facebook 推出并开源。 与 npm 相比，yarn 有着众多的优势，主要的优势在于：速度快、离线模式、版本控制。
+>
+> 详细安装方式参考官网：https://yarn.bootcss.com/docs/install/#mac-stable
+
+
+## vue 项目结构
 
 ```
 ├── babel.config.js      # babel配置
@@ -48,7 +63,7 @@
 ```
 
 ----
-## 三、vue 代码风格规范
+## vue 代码风格规范
 ##### 1. vue组件命名
   > 统一使用 PascalCase (单词首字母大写命名)声明约定
   > 1. 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。
@@ -186,7 +201,7 @@
 
 ----
 
-## 四、JavaScript 代码风格规范
+## JavaScript 代码风格规范
 ##### 1. 对象属性的访问
 >  当访问可能不存在的对象属性时 优先使用[可选链操作符( ?. )](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
 > 
@@ -317,7 +332,7 @@ Vue.prototype.$$ = optionalChaining;
 ```
    * [解构赋值参考资料](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-## 五、样式书写规范
+## 样式书写规范
 1. 根据项目设计图原型图归纳出本项目的一些公共样式类(功能类) 这些公共样式类尽量简单化 一个样式实现一个功能 实现原子化CSS
 2. 在项目编码过程中优先使用预定义好的公共样式类   
    > 优势
@@ -353,7 +368,7 @@ Vue.prototype.$$ = optionalChaining;
 2. [参考资料 2](https://juejin.cn/post/6917073600474415117)
 3. [参考资料 3](https://www.tailwindcss.cn/)
 
-## 六、注释规范
+## 注释规范
 1. 公共组件使用说明以及业务场景
    
 ```vue
@@ -384,27 +399,12 @@ Vue.prototype.$$ = optionalChaining;
 4. 特殊情况的代码处理说明,对于代码中特殊用途的变量、存在临界值、函数中使用的 hack、使用了某种算法或思路等需要进行注释描述
 5. 多重 if 判断语句的代码处理说明
 
-## 七、代码检查与格式化
+## 代码检查与格式化
 >项目采用 eslint 用来进行代码的校验，能够检测出代码中的潜在问题，提高代码质量；使用 prettier作为代码格式化工具，统一的代码风格能保证代码的可读性，所以提交代码前必须先格式化。
 > 
 >对于 mac 或者 linux 系统提交代码前会自动运行 git hook的pre-commit 检测代码问题并且格式化代码， win10 用户如果不自动运行 githook，则需自己执行npm run lint 或者 yarn lint 检测代码问题并且格式化代码
 
-
-## 八、包管理工具
-> 为保证运行结果的一致性和稳定性，项目将统一采用 yarn 作为包管理工具
-> 
-> yarn 就是一个类似于 npm 的包管理工具，它是由 facebook 推出并开源。 与 npm 相比，yarn 有着众多的优势，主要的优势在于：速度快、离线模式、版本控制。
-> 
-> 详细安装方式参考官网：https://yarn.bootcss.com/docs/install/#mac-stable
- 
-## 九、开发工具
-> 代码缩进统一使用两个空格
-> 优先推荐使用[WebStorm](https://www.jetbrains.com/webstorm/)进行项目开发
-   * WebStorm 统一配置如下
-
-![webstorm 配置](https://api.suboat.com/api/yichui/filepool/download/images/bbbf9e2fef6c4d6ece5bb5946d6055a5af87052e.jpg)
-
-## 十、git 提交规范
+## git 提交规范
 > 在使用Git进行代码的分布式版本控制时，规范化commit message可以帮助程序猿在多人开发协作中更好的理解他人对代码的改动信息，
 > 
 >避免大家按照各自的理解和习惯（甚至是随意）书写，而对他人和自己造成困惑，从而增加代码审查和纠错的时间成本。
@@ -428,7 +428,7 @@ Vue.prototype.$$ = optionalChaining;
 > 7. chore: 其他修改, 比如构建流程, 依赖管理.
 > 
 
-## 十一、交互体验优化
+## 交互体验优化
 
 1. Loading
    > 如果要加载过长时间，给用户一个反馈，能让用户知道现在系统还在运行，而不是卡主了或者是系统问题。
@@ -481,7 +481,7 @@ Vue.prototype.$$ = optionalChaining;
    > * 添加验证不通过表单项的信息提示
    > * 验证通过才可以提交表单,否则不予许提交表单
 
-## 十二、前端技术栈
+## 前端技术栈
 1. css预处理器: scss、less
 2. 基础框架: Vue、React-Native(APP开发)
 3. 组件库: 
@@ -494,7 +494,7 @@ Vue.prototype.$$ = optionalChaining;
 5. 图标处理:
    * iconfont + SVG（设计师无法导入到iconfont的特殊彩色icon 使用 svg）
 
-## 十二、部署文档
+## 部署文档
 [查看部署文档](/zh-cn/fe-deploy.md)
 
 ## todo

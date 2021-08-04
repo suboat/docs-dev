@@ -199,6 +199,23 @@
    >    * 如果条件出现在循环外部，可通过则在外层嵌套一层 DOM 标签，在这一层进行v-if判断，然后在内部进行v-for循环
    >    * 如果条件出现在循环内部，可通过计算属性computed提前过滤掉那些不需要显示的项
 
+##### 5. vue指令有缩写一律采用缩写形式
+```vue
+   // bad
+   v-bind:class="{'show-left'：true}"
+   v-on:click="getListData"
+   
+   // good
+   :class="{'show-left'：true}"
+   @click="getListData"
+
+```
+
+##### 6. vue-router
+   > 1. 路由的 path 使用横线连接 (kebab-case)
+   > 
+   > 2. 路由的 path 尽量与 views 下的页面名称保持一致,有利于看路由找到对应的页面代码源文件 
+
 ----
 
 ## JavaScript 代码风格规范
@@ -332,6 +349,8 @@ Vue.prototype.$$ = optionalChaining;
 ```
    * [解构赋值参考资料](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
+##### 6. 异步编程优先使用 [async/await](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Asynchronous/Async_await) 写法
+
 ## 样式书写规范
 1. 根据项目设计图原型图归纳出本项目的一些公共样式类(功能类) 这些公共样式类尽量简单化 一个样式实现一个功能 实现原子化CSS
 2. 在项目编码过程中优先使用预定义好的公共样式类   
@@ -364,10 +383,13 @@ Vue.prototype.$$ = optionalChaining;
    > * 转换
    > * 交互
 
+4. 样式类名(class)统一使用以中划线分隔的写法,遵循kebab-case声明约定
+
+----
 1. [参考资料 1](https://juejin.cn/post/6918971529124872205)
 2. [参考资料 2](https://juejin.cn/post/6917073600474415117)
 3. [参考资料 3](https://www.tailwindcss.cn/)
-
+----
 ## 注释规范
 1. 公共组件使用说明以及业务场景
    
@@ -398,6 +420,23 @@ Vue.prototype.$$ = optionalChaining;
 3. 复杂的业务逻辑处理说明
 4. 特殊情况的代码处理说明,对于代码中特殊用途的变量、存在临界值、函数中使用的 hack、使用了某种算法或思路等需要进行注释描述
 5. 多重 if 判断语句的代码处理说明
+6. vue template 里面的代码过长过于复杂时, 要对每一块代码进行分块注释
+```vue
+   <template>
+      <body>
+         <!-- header 头部 start -->
+         <header>
+            <div class="container">
+               <a href="#">
+                  <!-- 图片会把a标签给撑开，所以不用设置a标签的大小 -->
+                  <img src="images/header.jpg" />
+               </a>
+            </div>
+         </header>
+         <!-- header 头部 end -->
+      </body>
+   </template>
+```
 
 ## 代码检查与格式化
 >项目采用 eslint 用来进行代码的校验，能够检测出代码中的潜在问题，提高代码质量；使用 prettier作为代码格式化工具，统一的代码风格能保证代码的可读性，所以提交代码前必须先格式化。
@@ -447,7 +486,7 @@ Vue.prototype.$$ = optionalChaining;
    
 2. 数据为空提示
    > 页面块、列表等UI展示类布局的显示 遇到返回 null undefined 空字符串 应当显示'数据为空'提示,而不是留白.
-   > 
+   > 数据为空提示可以统一做成一份配置,集中管理,方便修改
 
 3. 重复提交
    > 在提交数据时，如果不做限制，用户可以重复提交，会导致脏数据问题。
@@ -502,3 +541,4 @@ Vue.prototype.$$ = optionalChaining;
 - [ ] 当前用户登录后被其他用户挤下线提示
 - [ ] 覆盖后端返回的报错信息
 - [ ] 统一配置列表为空文字
+- [ ] 针对 ui-app 的开发规范补充

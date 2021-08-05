@@ -11,5 +11,5 @@
   - [VUE开发规范](/zh-cn/vue.md)
 
 - Java
-  - [Java开发规范](/zh-cn/java.md)
+  - [Java开发规范](/zh-cn/java/java.md)
   
